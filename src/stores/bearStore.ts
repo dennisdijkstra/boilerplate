@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface BearState {
+export interface BearState {
   bears: number
   increase: () => void
 }

@@ -1,10 +1,14 @@
-import useBearStore from '@/stores/bearStore'
+import useBearStore, { BearState } from '@/stores/bearStore'
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 
+const getBearStoreState = (state: BearState) => ({
+  bears: state.bears,
+  increase: state.increase,
+})
+
 const App = () => {
-  const bears = useBearStore((state) => state.bears)
-  const increase = useBearStore((state) => state.increase)
+  const { bears, increase } = useBearStore(getBearStoreState)
 
   const handleClick = () => {
     increase()
