@@ -1,7 +1,7 @@
 import App from './App.tsx'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, RouteObject } from 'react-router-dom'
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: '/',
     element: <App />,
@@ -10,6 +10,8 @@ const router = createBrowserRouter([
     path: 'about',
     element: <h1>About</h1>,
   },
-])
+]
+
+const router = createBrowserRouter(routes)
 
 export default router
