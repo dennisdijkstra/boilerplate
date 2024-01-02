@@ -1,9 +1,12 @@
 import { useShallow } from 'zustand/react/shallow'
 import useBearStore from '@/stores/bearStore'
+import useBreakpointTest from '@/hooks/useBreakpointTest'
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 
 const App = () => {
+  const isMd = useBreakpointTest('md')
+
   const { bears, increase } = useBearStore(
     useShallow((state) => ({ bears: state.bears, increase: state.increase })),
   )
@@ -27,10 +30,10 @@ const App = () => {
         <button onClick={handleClick} className="bg-gray-50 px-5 py-2 rounded-md mb-2">Increase</button>
         <p>{bears}</p>
       </div>
-      <div className="mb-12">
+      <div className="mb-12 md:text-blue-500">
         <p>Edit <code>src/App.tsx</code> and save to test HMR</p>
       </div>
-      <p className="text-gray-400 text-sm">Click on the Vite and React logos to learn more</p>
+      {isMd && <p className="text-gray-400 text-sm">Click on the Vite and React logos to learn more</p>}
     </>
   )
 }
